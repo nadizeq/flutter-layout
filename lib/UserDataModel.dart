@@ -28,5 +28,6 @@ class UserDataModel {
     lastSeenTime = json['last_seen_time'];
     avatar = json['avatar'];
     messages = json['messages'];
+    status = json['status'];
   }
 }

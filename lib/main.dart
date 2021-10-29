@@ -28,6 +28,13 @@ class MyHomePage extends StatefulWidget{
 }
 
 class _MyHomePageState extends State <MyHomePage>{
+
+  late bool _error;
+  late bool _loading;
+  final int defaultPhotosPerPageCount = 20;
+  final int _nextPageThreshold = 10;
+  late int _pageNumber;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,12 +149,26 @@ class _MyHomePageState extends State <MyHomePage>{
                                       ),
                                     ),
 
-                                    Padding(padding: EdgeInsets.only(left:8,right:8),
-                                        child: Text(items[index].messages == null? ' '
-                                            : items[index].messages.toString(),
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold),))
+                                    Stack(
+                                      children: <Widget>[
+                                      Container(
+                                      width: 25.0,
+                                      height: 25.0,
+                                      alignment: Alignment.center,
+                                      decoration: new BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage('pictures/circle20.png'), fit: BoxFit.fill),
+                                      ),
+                                    ),
+                                        Padding(padding:
+                                        EdgeInsets.only(left: 8,right:8,top:4),
+                                          child: Text(items[index].messages == null? '' :items[index].messages.toString(),
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold),
+                                          ),),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
